@@ -1,0 +1,207 @@
+{
+  "project_metadata": {
+    "title": "Medisinsk Simulatorsenter (MSS) Website Modernization",
+    "domain": "simulatorsenteret.no",
+    "target_framework": "Astro + Tailwind CSS (Static deployment for Cloudflare Pages)",
+    "language": "Norwegian (nb-NO)",
+    "organization": "Medisinsk Simulatorsenter – St. Olavs hospital & NTNU, Trondheim",
+    "tagline": "Trening - Trygghet - Erfaring",
+    "since": "2003"
+  },
+  "design_archetype": {
+    "archetype": "Architectural Clinical Precision & High-Trust Healthcare (Swiss Hybrid)",
+    "vibe": "Modern, authoritative, clean Norwegian institutional aesthetic with Scandinavian warmth and crisp medical precision",
+    "contrast_philosophy": "Light-theme baseline with ice-tinted backgrounds, stark slate text, deep royal blue anchors (#0056A7), subtle glass card structures, and high-visibility status indicators"
+  },
+  "typography": {
+    "font_pairing": {
+      "headings": {
+        "font_family": "Plus Jakarta Sans, sans-serif",
+        "weights": [600, 700, 800],
+        "google_font_url": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      },
+      "body": {
+        "font_family": "Inter, sans-serif",
+        "weights": [400, 500, 600]
+      },
+      "mono_accent": {
+        "font_family": "JetBrains Mono, monospace",
+        "weights": [400, 500],
+        "usage": "Dates, statistics, institutional badges, section category codes"
+      }
+    },
+    "scale": {
+      "h1_hero": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-extrabold leading-[1.1]",
+      "h2_section": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-bold text-slate-900",
+      "h3_card": "text-xl sm:text-2xl font-bold text-slate-900",
+      "h4_sub": "text-lg sm:text-xl font-semibold text-slate-800",
+      "body_lg": "text-lg text-slate-600 leading-relaxed",
+      "body": "text-base text-slate-600 leading-relaxed",
+      "small_label": "text-xs font-mono font-medium tracking-wider uppercase text-blue-800"
+    }
+  },
+  "colors": {
+    "brand_primary": {
+      "hex": "#0056A7",
+      "tailwind": "bg-[#0056A7]",
+      "text": "text-[#0056A7]",
+      "border": "border-[#0056A7]",
+      "description": "Original MSS Blue modernized for high contrast actions and anchors"
+    },
+    "brand_navy": {
+      "hex": "#0B192C",
+      "tailwind": "bg-[#0B192C]",
+      "text": "text-[#0B192C]",
+      "description": "Deep clinical navy for footers, dark hero banners, and dense content cards"
+    },
+    "brand_cyan_accent": {
+      "hex": "#0096C7",
+      "tailwind": "bg-[#0096C7]",
+      "text": "text-[#0096C7]",
+      "description": "Interactive hover states and secondary highlights"
+    },
+    "light_surfaces": {
+      "canvas_bg": "#F8FAFC",
+      "card_bg": "#FFFFFF",
+      "card_subtle_bg": "#F1F5F9",
+      "ice_tint_bg": "#EBF3FA"
+    },
+    "borders": {
+      "default": "border-slate-200/80",
+      "focus": "border-[#0056A7]",
+      "subtle": "border-slate-100"
+    },
+    "text": {
+      "primary": "text-slate-900",
+      "secondary": "text-slate-600",
+      "muted": "text-slate-500",
+      "inverse": "text-white"
+    }
+  },
+  "visual_enhancers": {
+    "hero_overlay": "bg-gradient-to-r from-[#0B192C]/90 via-[#0B192C]/75 to-[#0056A7]/50",
+    "glass_nav": "bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm",
+    "glass_card": "bg-white/90 backdrop-blur-sm border border-slate-200/70 shadow-sm hover:shadow-md transition-all duration-300",
+    "grid_pattern": "radial-gradient(#0056A7 0.75px, transparent 0.75px) [background-size:16px_16px] opacity-10",
+    "subtle_border_beam": "hover:border-[#0056A7]/40 transition-colors duration-300"
+  },
+  "page_structures": {
+    "home_page": {
+      "hero_section": {
+        "title": "Medisinsk Simulatorsenter",
+        "subtitle": "Medisinsk simulering siden 2003",
+        "tagline": "Trening - Trygghet - Erfaring",
+        "description": "Et felles regionalt kompetansesenter for medisinsk simulering og ferdighetstrening ved St. Olavs hospital og NTNU.",
+        "badges": ["St. Olavs hospital", "NTNU Det medisinske fakultet", "Etablert 2003"],
+        "ctas": [
+          {"text": "Utforsk våre kurs", "link": "/kurs", "variant": "primary"},
+          {"text": "Forskning & Utvikling", "link": "/forskning", "variant": "outline"}
+        ]
+      },
+      "service_cards": [
+        {
+          "id": "kurs-undervisning",
+          "title": "Kurs & Undervisning",
+          "desc": "Bredt tilbud innen teamtrening, ferdighetstrening og fasilitatorkurs for helsepersonell.",
+          "link": "/kurs",
+          "tag": "01 / UTDANNING"
+        },
+        {
+          "id": "forskning-utvikling",
+          "title": "Forskning & Utvikling",
+          "desc": "Forskning på simuleringsbasert læring, pasientsikkerhet og kliniske prosessforbedringer.",
+          "link": "/forskning",
+          "tag": "02 / VITENSKAP"
+        },
+        {
+          "id": "om-oss",
+          "title": "Om Medisinsk Simulatorsenter",
+          "desc": "Norges ledende simuleringsmiljø organisert under St. Olavs hospital og NTNU i Trondheim.",
+          "link": "/om-oss",
+          "tag": "03 / ORGANISASJON"
+        }
+      ],
+      "stats_strip": [
+        {"value": "2003", "label": "Etablert årstal"},
+        {"value": "20+", "label": "Års erfaring med simulering"},
+        {"value": "St. Olavs & NTNU", "label": "Eierskap og samarbeid"},
+        {"value": "Trondheim", "label": "Lokalitet Øya campus"}
+      ]
+    },
+    "kurs_page": {
+      "title": "Kurs & Undervisning",
+      "lead": "Simuleringsbasert trening for leger, sykepleiere, studenter og tverrfaglige helseteam.",
+      "categories": [
+        "Tverrfaglig teamtrening (Akuttmedisin, Trauma, Resuscitering)",
+        "Fasilitatorkurs (Lær å lede debriefing og simulering)",
+        "Spesialistutdanning & LIS-trening",
+        "Spesialtilpassede simuleringspakker for avdelinger"
+      ]
+    },
+    "forskning_page": {
+      "title": "Forskning & Utvikling",
+      "lead": "Videreutvikling av medisinsk pedgogikk, non-technical skills og pasientsikkerhet.",
+      "focus_areas": [
+        "Effekt av simuleringsbasert teamtrening i akuttmottak og intensavdelinger",
+        "Debriefingsmetodikk og fasilitatorkompetanse",
+        "Implementering av ny teknologi og VR/AR i helseutdanning",
+        "Pasientsikkerhet og humanistiske faktorer (Human Factors)"
+      ]
+    },
+    "om_oss_page": {
+      "title": "Om Medisinsk Simulatorsenter",
+      "lead": "Knytter akademia og klinisk praksis sammen i moderne fasiliteter på St. Olavs hospital campus.",
+      "sections": [
+        "Historikk og samfunnsoppdrag siden 2003",
+        "Tilknytning til St. Olavs hospital HF og NTNU Det medisinske fakultet",
+        "Fasiliteter: Teknisk utstyr, kontrollrom, simuleringsrom og debrief-soner"
+      ]
+    },
+    "ansatte_page": {
+      "title": "Ansatte & Kontaktpersoner",
+      "lead": "Vårt fagmiljø av anestesiologer, sykepleiere, fasilitatorer og teknisk personale.",
+      "staff_roles": [
+        "Senterleder / Overlege",
+        "Fagsykepleier & Simuleringskoordinator",
+        "Simuleringstekniker & Systemansvarlig",
+        "Forsker / Postdoc NTNU"
+      ]
+    },
+    "kontakt_page": {
+      "title": "Kontakt Oss",
+      "address_st_olavs": "Medisinsk Simulatorsenter, St. Olavs hospital HF, Postboks 3250 Torgarden, 7006 Trondheim",
+      "address_besok": "Munkegata / Erling Skakkes gate, Kvinne-barn-senteret, St. Olavs hospital",
+      "phone": "+47 72 57 30 00",
+      "email": "post@simulatorsenteret.no",
+      "form_fields": ["Navn", "E-post", "Organisasjon / Avdeling", "Emne", "Melding"]
+    },
+    "personvern_page": {
+      "title": "Personvernerklæring",
+      "lead": "Informasjon om hvordan Medisinsk Simulatorsenter behandler personopplysninger i henhold til GDPR og helselovgivningen."
+    }
+  },
+  "image_urls": {
+    "logo_official": "https://www.simulatorsenteret.no/wp-content/uploads/2018/01/cropped-cropped-Logo_MSS_2018-2.png",
+    "hero_background": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwzfHxkb2N0b3JzJTIwdGVhbSUyMGhvc3BpdGFsJTIwbWVkaWNhbCUyMHJlc2VhcmNofGVufDB8fHx8MTc5NDU3NTcwMXww&ixlib=rb-4.1.0&q=85",
+    "simulation_training_1": "https://images.unsplash.com/photo-1577896851905-dc99e1f8b4b9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwzfHxtZWRpY2FsJTIwc2ltdWxhdGlvbiUyMGhvc3BpdGFsJTIwdHJhaW5pbmclMjBkb2N0b3IlMjBudXJzZXxlbnwwfHx8fDE3OTQ1NzU2OTd8MA&ixlib=rb-4.1.0&q=85",
+    "simulation_training_2": "https://images.unsplash.com/photo-1725870475677-7dc91efe9f93?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwyfHxtZWRpY2FsJTIwc2ltdWxhdGlvbiUyMGhvc3BpdGFsJTIwdHJhaW5pbmclMjBkb2N0b3IlMjBudXJzZXxlbnwwfHx8fDE3OTQ1NzU2OTd8MA&ixlib=rb-4.1.0&q=85",
+    "medical_team_1": "https://images.unsplash.com/photo-1516841273335-e39b37888115?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHw0fHxkb2N0b3JzJTIwdGVhbSUyMGhvc3BpdGFsJTIwbWVkaWNhbCUyMHJlc2VhcmNofGVufDB8fHx8MTc5NDU3NTcwMXww&ixlib=rb-4.1.0&q=85",
+    "medical_team_2": "https://images.unsplash.com/photo-1504813184591-01572f98c85f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwyfHxkb2N0b3JzJTIwdGVhbSUyMGhvc3BpdGFsJTIwbWVkaWNhbCUyMHJlc2VhcmNofGVufDB8fHx8MTc5NDU3NTcwMXww&ixlib=rb-4.1.0&q=85"
+  },
+  "component_path": "/app/frontend/src/components/",
+  "instructions_to_main_agent": [
+    "Use static Astro or React components cleanly styled with Tailwind CSS.",
+    "Preserve original brand identity (#0056A7 and official logo URL), but give it a high-end Norwegian clinical feel with crisp typography and generous spacing.",
+    "Navigation bar must include links to Home, Kurs/undervisning, Forskning/utvikling, Om oss, Ansatte, Kontakt, and Personvernerklæring with data-testid attributes on all interactive elements.",
+    "Footer must clearly highlight St. Olavs hospital & NTNU partnership, contact information, and quick links.",
+    "Contact form must be functional in UI with validation and clear confirmation states (data-testid included for submission testing).",
+    "Ensure total responsive fidelity on mobile, tablet, and high-DPI desktop viewports."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Ensure all interactive elements have data-testid attributes (e.g. data-testid='nav-link-kurs', data-testid='contact-form-submit-button').",
+    "Header must use glassmorphism with backdrop blur and visible navigation links on desktop viewports.",
+    "Do not use dark gradients for main background surfaces; default to crisp light surfaces (#F8FAFC and pure white #FFFFFF) with dark navy contrast elements.",
+    "Text contrast must adhere to WCAG AA / APCA guidelines with minimum 4.5:1 ratio for standard text.",
+    "All page headings must follow Plus Jakarta Sans font and maintain strict size ceilings (H1 max text-5xl to text-6xl on desktop)."
+  ]
+}

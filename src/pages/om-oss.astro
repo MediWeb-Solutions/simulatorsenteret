@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCta from '../components/ContactCta.astro';
+import { staff } from '../data/site';
+const initials = (n: string) => n.split(' ').map((p) => p[0]).slice(0, 2).join('');
+---
+<Layout title="Om oss og ansatte" active="om-oss">
+  <PageHero eyebrow="03 / Om oss" title="Om oss og ansatte" lead="Medisinsk SimulatorSenter (MSS) ble etablert i 2003 som landets første fullskala simuleringssenter – drevet i samarbeid mellom St. Olavs hospital, NTNU og Helse Midt-Norge." image="/images/simulering-1.jpg" />
+
+  <section class="container-x grid gap-12 py-20 lg:grid-cols-12" data-testid="about-content">
+    <div class="prose-mss lg:col-span-8">
+      <p>Medisinsk SimulatorSenter (MSS) ble etablert i 2003 som landets første fullskala simuleringssenter. Senteret drives gjennom et samarbeid mellom <a href="https://www.stolav.no/" target="_blank" rel="noopener">St. Olavs hospital</a>, <a href="https://www.ntnu.no/" target="_blank" rel="noopener">NTNU</a> og <a href="https://www.helse-midt.no/" target="_blank" rel="noopener">Helse Midt-Norge</a>. Simulatorsenteret er organisert som egen avdeling i Fagavdeling, under <a href="https://www.stolav.no/avdelinger/sentral-stab/fagavdelingen/utdanning/" target="_blank" rel="noopener">Avdeling for utdanning</a>.</p>
+      <p>Undervisningsressursene i senteret består av leger og spesialsykepleiere i bistillinger som kombineres med hovedstillinger i klinisk virksomhet innen anestesi, intensivmedisin og pediatri. Alt pedagogisk/didaktisk personell har europeisk utdanning som «fasilitator» i medisinsk simulering. Noen av senterets ansatte har formell pedagogisk utdanning utover dette.</p>
+      <p>I tillegg til forsknings- og utviklingsaktiviteten har Medisinsk SimulatorSenter en bred kursportefølje, og det er ca. 2500–3000 deltakere på kurs/simulering hvert år. Målgruppe for senterets aktivitet er medisinske og helsefaglige studenter i grunn- og videreutdanning samt etterutdanning av klinisk personell.</p>
+      <p>Senteret er kursarrangør for spesialisering og etterutdanning for alle helseprofesjoner i regionen. Det gjennomføres trening på praktiske ferdigheter og Non-Technical Skills (kommunikasjon, team-samarbeid og ledelse).</p>
+      <p>Det er etablert et vaskulært ferdighetslaboratorium sammen med kliniske avdelinger. MSS har erfaring med å undervise lærere/veiledere i klinikken i å anvende den pedagogisk/didaktiske modellen i klinisk undervisning (blant annet veiledere i ambulansetjenesten, sykepleieveiledere og personell som involveres i hendelsesanalyser ved sykehuset).</p>
+      <h2 class="!mb-4 !mt-10 text-2xl font-bold">Team som jobber sammen, trener sammen</h2>
+      <p>Øvelsen gjøres så realistisk som mulig for å øke overføringsverdien til praksis, og det gjøres videoopptak under treningen. Etter hver trening gjennomføres en debriefing. Debriefing innebærer refleksjon over det deltakerne har vært med på. Ved å diskutere det som skjedde, utforsker en hvorfor handlingsforløpet ble slik som det ble.</p>
+      <p>Simulering er spesielt velegnet til å trene på kommunikasjon og samhandling (Non-Technical Skills) i akutte situasjoner. Målet er å omskape det teamet har øvd på til erfaringer gjennom refleksjon over handling. For å understøtte refleksjonen vises klipp av videoopptaket.</p>
+      <p>Vi presenterer også arbeid som er gjort ved Simulatorsenteret på internasjonale kongresser. Se <a href="/forskning-utvikling/">noen av våre postere</a> her.</p>
+      <p>MSS er lokalisert inne i St. Olavs hospital og er i besittelse av avansert datateknologisk utstyr for gjennomføring av simulatortrening. Senteret gjennomfører i tillegg in situ simulering i utstrakt grad lokalt og ved alle sykehus i Helse Midt-Norge.</p>
+    </div>
+    <aside class="lg:col-span-4">
+      <div class="sticky top-28 space-y-4">
+        {[['2003', 'Etablert'], ['2500–3000', 'Kursdeltakere per år'], ['Non-Technical Skills', 'Kommunikasjon, samarbeid og ledelse']].map(([v, l]) => (
+          <div class="rounded-2xl border border-slate-200 bg-white p-6">
+            <p class="font-display text-2xl font-extrabold text-brand">{v}</p>
+            <p class="mt-1 text-sm text-slate-600">{l}</p>
+          </div>
+        ))}
+      </div>
+    </aside>
+  </section>
+
+  <section id="ansatte" class="scroll-mt-24 border-t border-slate-200 bg-white py-20" data-testid="staff-section">
+    <div class="container-x">
+      <p class="eyebrow">Vårt fagmiljø</p>
+      <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Ansatte</h2>
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {staff.map((p, i) => (
+          <article class="group overflow-hidden rounded-3xl border border-slate-200 bg-canvas" data-testid={`staff-card-${i}`}>
+            <div class="aspect-[4/5] overflow-hidden bg-ice">
+              {p.img
+                ? <img src={p.img} alt={p.name} loading="lazy" class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                : <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-ice to-white"><span class="font-display text-5xl font-extrabold text-brand/40">{initials(p.name)}</span></div>}
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold">{p.name}</h3>
+              <p class="mt-1 text-sm font-semibold text-brand">{p.role}</p>
+              {p.extra.map((e) => <p class="text-sm text-slate-600">{e}</p>)}
+              <a href={`mailto:${p.email}`} class="mt-3 block break-all text-sm text-slate-600 hover:text-brand" data-testid={`staff-email-${i}`}>{p.email}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactCta />
+</Layout>

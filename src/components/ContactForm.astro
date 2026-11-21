@@ -1,0 +1,42 @@
+---
+import { site } from '../data/site';
+const field = 'mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition-[border-color,box-shadow] focus:border-brand focus:ring-4 focus:ring-brand/10';
+---
+<form id="contact-form" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-navy/5 sm:p-10" data-endpoint={site.formEndpoint} data-email={site.email} novalidate data-testid="contact-form">
+  <h2 class="text-2xl font-bold">Send oss en melding</h2>
+  <div class="mt-8 grid gap-5 sm:grid-cols-2">
+    <label class="text-sm font-medium text-slate-700">Navn *<input name="navn" required class={field} data-testid="contact-form-name" /></label>
+    <label class="text-sm font-medium text-slate-700">E-post *<input name="epost" type="email" required class={field} data-testid="contact-form-email" /></label>
+    <label class="text-sm font-medium text-slate-700 sm:col-span-2">Organisasjon / avdeling<input name="organisasjon" class={field} data-testid="contact-form-org" /></label>
+    <label class="text-sm font-medium text-slate-700 sm:col-span-2">Emne *<input name="emne" required class={field} data-testid="contact-form-subject" /></label>
+    <label class="text-sm font-medium text-slate-700 sm:col-span-2">Melding *<textarea name="melding" rows="6" required class={field} data-testid="contact-form-message"></textarea></label>
+  </div>
+  <p id="form-error" class="mt-4 hidden text-sm font-medium text-red-700" role="alert" data-testid="contact-form-error">Fyll ut alle påkrevde felt med gyldig e-post.</p>
+  <p id="form-success" class="mt-4 hidden rounded-xl bg-ice p-4 text-sm font-medium text-brand" role="status" data-testid="contact-form-success"></p>
+  <button type="submit" class="btn-primary mt-6 w-full justify-center sm:w-auto" data-testid="contact-form-submit-button">Send melding →</button>
+  <p class="mt-4 text-xs text-slate-500">Opplysningene brukes kun til å svare på henvendelsen. Se <a href="/personvernerklaering/" class="underline">personvernerklæringen</a>.</p>
+</form>
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const err = document.getElementById('form-error')!;
+  const ok = document.getElementById('form-success')!;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    ok.classList.add('hidden');
+    if (!form.checkValidity()) { err.classList.remove('hidden'); return; }
+    err.classList.add('hidden');
+    const d = new FormData(form);
+    const endpoint = form.dataset.endpoint;
+    if (endpoint) {
+      const res = await fetch(endpoint, { method: 'POST', body: d, headers: { Accept: 'application/json' } }).catch(() => null);
+      if (!res?.ok) { err.textContent = 'Noe gikk galt. Prøv igjen eller send oss en e-post.'; err.classList.remove('hidden'); return; }
+      ok.textContent = 'Takk! Meldingen er sendt, og vi tar kontakt så snart vi kan.';
+    } else {
+      const body = `Navn: ${d.get('navn')}\nE-post: ${d.get('epost')}\nOrganisasjon: ${d.get('organisasjon') || '-'}\n\n${d.get('melding')}`;
+      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(String(d.get('emne')))}&body=${encodeURIComponent(body)}`;
+      ok.textContent = 'E-postprogrammet ditt åpnes med meldingen ferdig utfylt – trykk send der.';
+    }
+    ok.classList.remove('hidden');
+    form.reset();
+  });
+</script>

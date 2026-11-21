@@ -1,16 +1,91 @@
 ---
----
+import Layout from '@/layouts/Layout.astro';
+import ContactCta from '@/components/ContactCta.astro';
+import { partners } from '@/data/site';
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+const services = [
+  { tag: '01 / Utdanning', title: 'Kurs / undervisning', text: 'Simulatorsenteret arrangerer ulike kurs og undervisning for studenter og erfarne fagpersoner.', href: '/kurs-undervisning/', id: 'kurs' },
+  { tag: '02 / Forskning', title: 'Forskning / utvikling', text: 'Forskning og faglig utvikling står sentralt i Simulatorsenterets oppgaver.', href: '/forskning-utvikling/', id: 'forskning' },
+  { tag: '03 / Organisasjon', title: 'Om oss og ansatte', text: 'Medisinsk SimulatorSenter startet som det første fullskala simuleringssenteret i 2003.', href: '/om-oss/', id: 'om-oss' },
+];
+const stats = [
+  { v: '2003', l: 'Etablert – landets første fullskala simuleringssenter' },
+  { v: '2500–3000', l: 'Kursdeltakere hvert år' },
+  { v: 'In situ', l: 'Simulering ved alle sykehus i Helse Midt-Norge' },
+];
+---
+<Layout active="home">
+  <section class="relative isolate -mt-18 overflow-hidden bg-navy pt-18" data-testid="home-hero">
+    <img src="/images/hero.jpg" alt="Helsepersonell i arbeid" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+    <div class="absolute inset-0 -z-10 bg-linear-to-r from-navy via-navy/85 to-brand/40"></div>
+    <div class="container-x py-24 sm:py-32 lg:py-40">
+      <p class="rise inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 font-mono text-xs uppercase tracking-[0.18em] text-white backdrop-blur">
+        <span class="h-2 w-2 rounded-full bg-leaf"></span> Medisinsk simulering siden 2003
+      </p>
+      <h1 class="rise d1 mt-6 max-w-3xl text-4xl font-extrabold leading-[1.05] text-white! sm:text-5xl lg:text-6xl" data-testid="hero-title">
+        Medisinsk <span class="text-cyan">Simulator</span>senter
+      </h1>
+      <p class="rise d2 mt-6 font-display text-lg font-semibold text-white/90 md:text-xl">Trening <span class="text-leaf">·</span> Trygghet <span class="text-leaf">·</span> Erfaring</p>
+      <p class="rise d2 mt-4 max-w-xl text-base text-slate-200 md:text-lg">Team som jobber sammen i akutte medisinske situasjoner, trener sammen – ved St. Olavs hospital i Trondheim.</p>
+      <div class="rise d3 mt-10 flex flex-wrap gap-3">
+        <a href="/kurs-undervisning/" class="btn-primary" data-testid="hero-cta-kurs">Se kurs og undervisning →</a>
+        <a href="/om-oss/" class="btn-ghost" data-testid="hero-cta-om-oss">Om senteret</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative z-10 container-x -mt-14" data-testid="services-section">
+    <div class="grid gap-5 md:grid-cols-3">
+      {services.map((s) => (
+        <a href={s.href} class="group relative flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-xl shadow-navy/5 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-2xl" data-testid={`service-card-${s.id}`}>
+          <span class="eyebrow">{s.tag}</span>
+          <h3 class="mt-5 text-2xl font-bold">{s.title}</h3>
+          <p class="mt-3 flex-1 text-slate-600">{s.text}</p>
+          <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand">Les mer <span class="transition-transform group-hover:translate-x-1">→</span></span>
+          <span class="absolute bottom-0 left-0 h-1 w-0 bg-linear-to-r from-brand to-cyan transition-[width] duration-500 group-hover:w-full"></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-x grid gap-12 py-24 lg:grid-cols-12 lg:gap-16" data-testid="about-section">
+    <div class="lg:col-span-5">
+      <div class="relative">
+        <img src="/images/simulering-video.png" alt="Simulering ved Medisinsk SimulatorSenter" class="aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl shadow-navy/10" />
+        <div class="absolute -bottom-6 -right-3 rounded-2xl bg-white p-5 shadow-xl ring-1 ring-slate-200 sm:-right-6">
+          <p class="font-display text-3xl font-extrabold text-brand">20+</p>
+          <p class="text-sm text-slate-600">år med simulering</p>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <p class="eyebrow">Om oss</p>
+      <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Landets første fullskala simuleringssenter</h2>
+      <div class="prose-mss mt-6">
+        <p>Medisinsk SimulatorSenter (MSS) ble etablert i 2003 som landets <strong>første fullskala simuleringssenter</strong>. Senteret drives gjennom et samarbeid mellom <a href="https://www.stolav.no/" target="_blank" rel="noopener">St. Olavs hospital</a>, <a href="https://www.ntnu.no/" target="_blank" rel="noopener">NTNU</a> og <a href="https://www.helse-midt.no/" target="_blank" rel="noopener">Helse Midt-Norge</a>. Simulatorsenteret er organisert som egen avdeling i Fagavdeling, under <a href="https://www.stolav.no/avdelinger/sentral-stab/fagavdelingen/utdanning/" target="_blank" rel="noopener">Avdeling for utdanning</a>.</p>
+        <p>Undervisningsressursene i senteret består av leger og sykepleiere i bistillinger som kombineres med hovedstillinger i klinisk virksomhet innen anestesi, intensivmedisin og pediatri. Alt pedagogisk/didaktisk personell har europeisk utdanning som «fasilitator» i medisinsk simulering. Flere av <a href="/om-oss/#ansatte">senterets ansatte</a> har formell pedagogisk utdanning utover dette.</p>
+      </div>
+      <a href="/om-oss/" class="btn-outline mt-4" data-testid="about-more-button">Mer om simulatorsenteret →</a>
+    </div>
+  </section>
+
+  <section class="border-y border-slate-200 bg-white" data-testid="stats-section">
+    <div class="container-x grid divide-y divide-slate-200 md:grid-cols-3 md:divide-x md:divide-y-0">
+      {stats.map((s) => (
+        <div class="py-10 md:px-8 first:md:pl-0">
+          <p class="font-display text-4xl font-extrabold text-navy">{s.v}</p>
+          <p class="mt-2 text-sm text-slate-600">{s.l}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-x py-14" data-testid="partners-section">
+    <p class="text-center font-mono text-xs uppercase tracking-[0.18em] text-slate-500">Et samarbeid mellom</p>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+      {partners.map((p) => <a href={p.href} target="_blank" rel="noopener" class="font-display text-xl font-bold text-slate-400 transition-colors hover:text-brand sm:text-2xl" data-testid={`partner-${p.name.split(' ')[0].toLowerCase()}`}>{p.name}</a>)}
+    </div>
+  </section>
+
+  <ContactCta />
+</Layout>

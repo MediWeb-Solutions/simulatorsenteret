@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #0056a7;
+  --color-brand-dark: #003f7d;
+  --color-navy: #0b192c;
+  --color-cyan: #14a9d1;
+  --color-leaf: #7ab648;
+  --color-ice: #ebf3fa;
+  --color-canvas: #f8fafc;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+  --font-sans: "Figtree", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-canvas text-slate-700 font-sans antialiased; }
+h1, h2, h3, h4 { @apply font-display text-slate-900 tracking-tight; }
+::selection { background: #14a9d1; color: #fff; }
+
+@utility eyebrow { @apply font-mono text-xs font-medium uppercase tracking-[0.18em] text-brand; }
+@utility container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
+@utility btn { @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-[background-color,color,transform,box-shadow] duration-200 hover:-translate-y-0.5; }
+@utility btn-primary { @apply btn bg-brand text-white shadow-lg shadow-brand/20 hover:bg-brand-dark; }
+@utility btn-ghost { @apply btn border border-white/40 text-white hover:bg-white/10; }
+@utility btn-outline { @apply btn border border-brand/30 text-brand hover:bg-brand hover:text-white; }
+.prose-mss p { @apply mb-5 leading-relaxed text-slate-600 text-base sm:text-lg; }
+.prose-mss a { @apply text-brand font-medium underline decoration-brand/30 underline-offset-4 hover:decoration-brand; }
+.prose-mss strong { @apply text-slate-900; }
+.dot-grid { background-image: radial-gradient(rgba(0,86,167,.18) 1px, transparent 1px); background-size: 18px 18px; }
+
+@keyframes rise { from { opacity: .001; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+  .d1 { animation-delay: .1s; } .d2 { animation-delay: .2s; } .d3 { animation-delay: .3s; }
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 40s linear infinite; }

@@ -1,0 +1,22 @@
+---
+interface Props { eyebrow: string; title: string; lead?: string; image?: string; }
+const { eyebrow, title, lead, image } = Astro.props;
+---
+<section class="relative overflow-hidden border-b border-slate-200 bg-white" data-testid="page-hero">
+  <div class="dot-grid absolute inset-0 opacity-60 [mask-image:linear-gradient(to_right,black,transparent_70%)]"></div>
+  <div class="container-x relative grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-12">
+    <div class="lg:col-span-7">
+      <p class="eyebrow rise">{eyebrow}</p>
+      <h1 class="rise d1 mt-4 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl" data-testid="page-title">{title}</h1>
+      {lead && <p class="rise d2 mt-6 max-w-2xl text-base text-slate-600 md:text-lg">{lead}</p>}
+    </div>
+    {image && (
+      <div class="rise d3 lg:col-span-5">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl shadow-navy/10 ring-1 ring-slate-200">
+          <img src={image} alt="" class="h-full w-full object-cover" />
+          <div class="absolute bottom-0 left-0 h-1.5 w-full bg-gradient-to-r from-brand via-cyan to-leaf"></div>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

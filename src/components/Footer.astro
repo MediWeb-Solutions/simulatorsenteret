@@ -1,0 +1,42 @@
+---
+import { site, nav, partners } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="relative overflow-hidden bg-navy text-slate-300" data-testid="site-footer">
+  <img src="/images/logo.png" alt="" class="spin-slow pointer-events-none absolute -right-24 -top-24 h-80 w-80 opacity-[0.06]" />
+  <div class="container-x relative grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="flex items-center gap-3">
+        <img src="/images/logo.png" alt="" class="h-10 w-10" />
+        <span class="font-display text-lg font-bold text-white">Medisinsk SimulatorSenter</span>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed">Medisinsk simulering siden 2003. Et samarbeid mellom St. Olavs hospital, NTNU og Helse Midt-Norge.</p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {partners.map((p) => <a href={p.href} target="_blank" rel="noopener" class="rounded-full border border-white/15 px-3 py-1 text-xs text-slate-300 hover:border-cyan hover:text-white" data-testid={`footer-partner-${p.name.split(' ')[0].toLowerCase()}`}>{p.name}</a>)}
+      </div>
+    </div>
+    <div>
+      <h4 class="font-mono text-xs uppercase tracking-[0.18em] !text-cyan">Besøksadresse</h4>
+      <address class="mt-4 not-italic text-sm leading-7">{site.visit.map((l) => <>{l}<br /></>)}</address>
+    </div>
+    <div>
+      <h4 class="font-mono text-xs uppercase tracking-[0.18em] !text-cyan">Postadresse</h4>
+      <address class="mt-4 not-italic text-sm leading-7">{site.post.map((l) => <>{l}<br /></>)}</address>
+      <a href={site.phoneHref} class="mt-4 block text-sm font-semibold text-white hover:text-cyan" data-testid="footer-phone">{site.phone}</a>
+      <a href={`mailto:${site.email}`} class="mt-1 block break-all text-sm text-white hover:text-cyan" data-testid="footer-email">{site.email}</a>
+    </div>
+    <div>
+      <h4 class="font-mono text-xs uppercase tracking-[0.18em] !text-cyan">Snarveier</h4>
+      <ul class="mt-4 space-y-2 text-sm">
+        {nav.map((n) => <li><a href={n.href} class="hover:text-white" data-testid={`footer-link-${n.id}`}>{n.label}</a></li>)}
+        <li><a href="/personvernerklaering/" class="hover:text-white" data-testid="footer-link-personvern">Personvernerklæring</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="container-x flex flex-col gap-2 py-6 text-xs text-slate-400 sm:flex-row sm:justify-between">
+      <span>Copyright © {year} Medisinsk SimulatorSenter.</span>
+      <span>{site.tagline}</span>
+    </div>
+  </div>
+</footer>
