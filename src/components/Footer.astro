@@ -22,7 +22,7 @@ const year = new Date().getFullYear();
     <div>
       <h4 class="font-mono text-xs uppercase tracking-[0.18em] !text-cyan">Postadresse</h4>
       <address class="mt-4 not-italic text-sm leading-7">{site.post.map((l) => <>{l}<br /></>)}</address>
-      <a href={site.phoneHref} class="mt-4 block text-sm font-semibold text-white hover:text-cyan" data-testid="footer-phone">{site.phone}</a>
+      <a href={`tel:${site.phoneHref}`} class="mt-4 block text-sm font-semibold text-white hover:text-cyan" data-testid="footer-phone">{site.phone}</a>
       <a href={`mailto:${site.email}`} class="mt-1 block break-all text-sm text-white hover:text-cyan" data-testid="footer-email">{site.email}</a>
     </div>
     <div>
@@ -35,7 +35,8 @@ const year = new Date().getFullYear();
   </div>
   <div class="border-t border-white/10">
     <div class="container-x flex flex-col gap-2 py-6 text-xs text-slate-400 sm:flex-row sm:justify-between">
-      <span>Copyright © {year} Medisinsk SimulatorSenter.</span>
+      <span>Copyright &copy; {year} Medisinsk SimulatorSenter.</span>
+      <span>Design og utvikling: <a href="https://mediweb.no" target="_blank" rel="noopener" class="hover:text-white">MediWeb Solutions</a></span>
       <span>{site.tagline}</span>
     </div>
   </div>

@@ -13,10 +13,22 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
-html { scroll-behavior: smooth; }
-body { @apply bg-canvas text-slate-700 font-sans antialiased; }
-h1, h2, h3, h4 { @apply font-display text-slate-900 tracking-tight; }
-::selection { background: #14a9d1; color: #fff; }
+html { 
+  scroll-behavior: smooth; 
+}
+
+body { 
+  @apply bg-canvas text-slate-700 font-sans antialiased; 
+}
+
+h1, h2, h3, h4 { 
+  @apply font-display text-slate-900 tracking-tight; 
+}
+
+::selection { 
+  background: #14a9d1; 
+  color: #fff; 
+}
 
 @utility eyebrow { @apply font-mono text-xs font-medium uppercase tracking-[0.18em] text-brand; }
 @utility container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }

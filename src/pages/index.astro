@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import ContactCta from '@/components/ContactCta.astro';
 import { partners } from '@/data/site';
+import { ArrowRight } from '@lucide/astro/icons';
 
 const services = [
   { tag: '01 / Utdanning', title: 'Kurs / undervisning', text: 'Simulatorsenteret arrangerer ulike kurs og undervisning for studenter og erfarne fagpersoner.', href: '/kurs-undervisning/', id: 'kurs' },
@@ -41,7 +42,7 @@ const stats = [
           <span class="eyebrow">{s.tag}</span>
           <h3 class="mt-5 text-2xl font-bold">{s.title}</h3>
           <p class="mt-3 flex-1 text-slate-600">{s.text}</p>
-          <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand">Les mer <span class="transition-transform group-hover:translate-x-1">→</span></span>
+          <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand">Les mer <span class="transition-transform group-hover:translate-x-1"><ArrowRight /></span></span>
           <span class="absolute bottom-0 left-0 h-1 w-0 bg-linear-to-r from-brand to-cyan transition-[width] duration-500 group-hover:w-full"></span>
         </a>
       ))}
@@ -62,10 +63,14 @@ const stats = [
       <p class="eyebrow">Om oss</p>
       <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Landets første fullskala simuleringssenter</h2>
       <div class="prose-mss mt-6">
-        <p>Medisinsk SimulatorSenter (MSS) ble etablert i 2003 som landets <strong>første fullskala simuleringssenter</strong>. Senteret drives gjennom et samarbeid mellom <a href="https://www.stolav.no/" target="_blank" rel="noopener">St. Olavs hospital</a>, <a href="https://www.ntnu.no/" target="_blank" rel="noopener">NTNU</a> og <a href="https://www.helse-midt.no/" target="_blank" rel="noopener">Helse Midt-Norge</a>. Simulatorsenteret er organisert som egen avdeling i Fagavdeling, under <a href="https://www.stolav.no/avdelinger/sentral-stab/fagavdelingen/utdanning/" target="_blank" rel="noopener">Avdeling for utdanning</a>.</p>
-        <p>Undervisningsressursene i senteret består av leger og sykepleiere i bistillinger som kombineres med hovedstillinger i klinisk virksomhet innen anestesi, intensivmedisin og pediatri. Alt pedagogisk/didaktisk personell har europeisk utdanning som «fasilitator» i medisinsk simulering. Flere av <a href="/om-oss/#ansatte">senterets ansatte</a> har formell pedagogisk utdanning utover dette.</p>
+        <p>Medisinsk SimulatorSenter (MSS) ble etablert i 2003 som landets <strong>første fullskala simuleringssenter</strong>. 
+          Senteret drives gjennom et samarbeid mellom <a href="https://www.stolav.no/" target="_blank" rel="noopener">St. Olavs hospital</a>, <a href="https://www.ntnu.no/" target="_blank" rel="noopener">NTNU</a> og <a href="https://www.helse-midt.no/" target="_blank" rel="noopener">Helse Midt-Norge</a>. 
+          Simulatorsenteret er organisert som egen avdeling i Fagavdeling, under <a href="https://www.stolav.no/avdelinger/sentral-stab/fagavdelingen/utdanning/" target="_blank" rel="noopener">Avdeling for utdanning</a>.</p>
+        <p>Undervisningsressursene i senteret består av leger og sykepleiere i bistillinger som kombineres med hovedstillinger i klinisk virksomhet innen anestesi, intensivmedisin og pediatri. 
+          Alt pedagogisk/didaktisk personell har europeisk utdanning som &quot;facilitator&quot; i medisinsk simulering. 
+          Flere av <a href="/om-oss/#ansatte">senterets ansatte</a> har formell pedagogisk utdanning utover dette.</p>
       </div>
-      <a href="/om-oss/" class="btn-outline mt-4" data-testid="about-more-button">Mer om simulatorsenteret →</a>
+      <a href="/om-oss/" class="btn-outline mt-4" data-testid="about-more-button">Mer om simulatorsenteret <ArrowRight /></a>
     </div>
   </section>
 

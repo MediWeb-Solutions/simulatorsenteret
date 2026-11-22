@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import { research } from '../data/site';
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import { research } from '@/data/site';
 const theses = [...research.phd.map((t) => ({ ...t, kind: 'Doktorgrad' })), ...research.master.map((t) => ({ ...t, kind: 'Mastergrad' }))];
 ---
 <Layout title="Forskning / utvikling" active="forskning">
